@@ -96,7 +96,6 @@ public class EditServlet extends HttpServlet {
                     s.setAttribute("msg", msg);
                 }
 
-                //end of phots work
             } else {
                 out.println("not updated..");
                 Message msg = new Message("Something went wrong..", "error", "alert-danger");
