@@ -32,7 +32,7 @@
 
     <div class="col-md-6 mt-2">
         <div class="card">
-            <img class="card-img-top" src="blog_pics/<%= p.getpPic()%>" alt="Card image cap">
+            <img class="card-img-top" src="post/<%= p.getpPic()%>" alt="Card image capf">
             <div class="card-body">
                 <b><%= p.getpTitle()%></b>
                 <p><%= p.getpContent()%></p>
@@ -46,7 +46,7 @@
                 <a href="#!" onclick="doLike(<%= p.getPid()%>,<%= uuu.getId()%>)" class="btn btn-outline-light btn-sm"> <i class="fa fa-thumbs-o-up"></i> <span class="like-counter"><%= ld.countLikeOnPost(p.getPid())%></span>  </a>
 
                 <a href="show_blog_page.jsp?post_id=<%= p.getPid()%>" class="btn btn-outline-light btn-sm">Read More...</a>
-                <a href="#!" class="btn btn-outline-light btn-sm"> <i class="fa fa-commenting-o"></i> <span>20</span>  </a>
+                
             </div>
 
         </div>

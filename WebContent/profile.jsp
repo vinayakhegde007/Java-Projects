@@ -104,7 +104,7 @@
             Message m = (Message) session.getAttribute("msg");
             if (m != null) {
         %>
-        <div class="alert <%= m.getCssClass()%>" role="alert">
+        <div class="alert <%= m.getCssClass()%> text-center" role="alert" >
             <%= m.getContent()%>
         </div> 
 
@@ -186,6 +186,7 @@
                     </div>
                     <div class="modal-body">
                         <div class="container text-center">
+                        
                             <img src="pics/<%= user.getProfile()%>" class="img-fluid" style="border-radius:50%;max-width: 150px;;" >
                             <br>
                             <h5 class="modal-title mt-3" id="exampleModalLabel"> <%= user.getName()%> </h5>
@@ -420,10 +421,13 @@
                             console.log(data);
                             if (data.trim() == 'done')
                             {
-                                swal("Good job!", "saved successfully", "success");
+                                swal("Good job!", "saved successfully", "success").then(()=>{
+                                    window.location.reload()})
+                               
                             } else
                             {
-                                swal("Error!!", "Something went wrong try again...", "error");
+                                swal("Error!!", "Something went wrong try again...", "error")
+                                
                             }
                         },
                         error: function (jqXHR, textStatus, errorThrown) {

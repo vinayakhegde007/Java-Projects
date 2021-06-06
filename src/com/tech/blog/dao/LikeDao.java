@@ -31,7 +31,7 @@ public class LikeDao {
     public int countLikeOnPost(int pid) {
         int count = 0;
 
-        String q = "select count(*) from liked where pid=?";
+        String q = "select count(*) from likes where pid=?";
         try {
             PreparedStatement p = this.con.prepareStatement(q);
             p.setInt(1, pid);
@@ -50,7 +50,7 @@ public class LikeDao {
     public boolean isLikedByUser(int pid, int uid) {
         boolean f = false;
         try {
-            PreparedStatement p = this.con.prepareStatement("select * from liked where pid=? and uid=?");
+            PreparedStatement p = this.con.prepareStatement("select * from likes where pid=? and uid=?");
             p.setInt(1, pid);
             p.setInt(2, uid);
             ResultSet set = p.executeQuery();

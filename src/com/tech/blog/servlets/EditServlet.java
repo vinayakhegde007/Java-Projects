@@ -55,8 +55,9 @@ public class EditServlet extends HttpServlet {
             String userPassword = request.getParameter("user_password");
             String userAbout = request.getParameter("user_about");
             Part part = request.getPart("image");
+            
 
-            String imageName = part.getSubmittedFileName();
+            
 
             //get the user from the session...
             HttpSession s = request.getSession();
@@ -66,36 +67,33 @@ public class EditServlet extends HttpServlet {
             user.setPassword(userPassword);
             user.setAbout(userAbout);
             String oldFile = user.getProfile();
-
-            user.setProfile(imageName);
+            if(part.getSize()!=0) {
+            	String imageName = part.getSubmittedFileName();
+            	user.setProfile(imageName);            	
+            }
 
             //update database....
             UserDao userDao = new UserDao(ConnectionProvider.getConnection());
 
             boolean ans = userDao.updateUser(user);
+            
             if (ans) {
+            	
+            	if(part.getSize() != 0) {
+            		 String path =  request.getRealPath("pics")+"\\"+user.getProfile();
+                     //start of photo work
+                     //delete code
+                     String pathOldFile = request.getRealPath("pics")+"\\"+oldFile;
+                     if (!oldFile.equals("default.png")) {
+                         Helper.deleteFile(pathOldFile);
+                     }
 
-                String path = request.getRealPath("/") + "pics" + File.separator + user.getProfile();
-
-                //start of photo work
-                //delete code
-                String pathOldFile = request.getRealPath("/") + "pics" + File.separator + oldFile;
-
-                if (!oldFile.equals("default.png")) {
-                    Helper.deleteFile(pathOldFile);
-                }
-
-                if (Helper.saveFile(part.getInputStream(), path)) {
-                    out.println("Profile updated...");
-                    Message msg = new Message("Profile details updated...", "success", "alert-success");
-                    s.setAttribute("msg", msg);
-
-                } else {
-                    //////////////
-                    Message msg = new Message("Something went wrong..", "error", "alert-danger");
-                    s.setAttribute("msg", msg);
-                }
-
+                    
+            	}
+            	 out.println("Profile updated");
+                 Message msg = new Message("Profile details updated...", "success", "alert-success");
+                 s.setAttribute("msg", msg);
+               
             } else {
                 out.println("not updated..");
                 Message msg = new Message("Something went wrong..", "error", "alert-danger");

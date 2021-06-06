@@ -155,7 +155,7 @@
 
                         <div class="card-body">
 
-                            <img class="card-img-top my-2" src="blog_pics/<%= p.getpPic()%>" alt="Card image cap">
+                            <img class="card-img-top my-2" src="post/<%= p.getpPic()%>" alt="Card image cap">
 
 
                             <div class="row my-3 row-user">
