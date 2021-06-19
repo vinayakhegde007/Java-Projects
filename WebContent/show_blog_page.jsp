@@ -141,7 +141,7 @@
 
             <div class="row my-4">
 
-                <div class="col-md-8 offset-md-2">
+                <div class="col-md-6 offset-md-3">
 
 
                     <div class="card">
@@ -153,9 +153,10 @@
 
                         </div>
 
-                        <div class="card-body">
-
-                            <img class="card-img-top my-2" src="post/<%= p.getpPic()%>" alt="Card image cap">
+                        <div class="card-body ">
+                            <div class="text-center">
+                            <img class="card-img-top my-2 " style="max-height:300px;max-width: 400px " src="post/<%= p.getpPic()%>" alt="Card image cap">
+                            </div>
 
 
                             <div class="row my-3 row-user">

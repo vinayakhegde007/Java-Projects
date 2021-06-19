@@ -13,6 +13,11 @@ import com.tech.blog.helper.Helper;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.PriorityQueue;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
@@ -28,6 +33,18 @@ public class AddPostServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+    	
+    	
+    	
+
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
 
@@ -45,7 +62,7 @@ public class AddPostServlet extends HttpServlet {
             PostDao dao = new PostDao(ConnectionProvider.getConnection());
             if (dao.savePost(p)) {
 
-                String path = request.getRealPath("post") +"\\"+ part.getSubmittedFileName();
+                String path = request.getRealPath("/")+"post"+File.separator+ part.getSubmittedFileName();
                 Helper.saveFile(part.getInputStream(), path);
                 out.println("done");
             } else {

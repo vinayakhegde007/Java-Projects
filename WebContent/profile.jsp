@@ -130,7 +130,7 @@
                             </a>
                             <!--categories-->
 
-                            <%                                PostDao d = new PostDao(ConnectionProvider.getConnection());
+                            <%                            PostDao d = new PostDao(ConnectionProvider.getConnection());
                                 ArrayList<Category> list1 = d.getAllCategories();
                                 for (Category cc : list1) {
 

@@ -80,10 +80,11 @@ public class EditServlet extends HttpServlet {
             if (ans) {
             	
             	if(part.getSize() != 0) {
-            		 String path =  request.getRealPath("pics")+"\\"+user.getProfile();
-                     //start of photo work
-                     //delete code
-                     String pathOldFile = request.getRealPath("pics")+"\\"+oldFile;
+            		System.out.println("profile updated");
+            		 String path =  request.getRealPath("/")+"pics"+File.separator+user.getProfile();
+            		 Helper.saveFile(part.getInputStream(), path);
+            		 
+                     String pathOldFile = request.getRealPath("/")+"pics"+File.separator+oldFile;
                      if (!oldFile.equals("default.png")) {
                          Helper.deleteFile(pathOldFile);
                      }
@@ -91,7 +92,7 @@ public class EditServlet extends HttpServlet {
                     
             	}
             	 out.println("Profile updated");
-                 Message msg = new Message("Profile details updated...", "success", "alert-success");
+                 Message msg = new Message("Profile details updated...","success", "alert-success");
                  s.setAttribute("msg", msg);
                
             } else {

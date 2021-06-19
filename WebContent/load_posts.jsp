@@ -32,7 +32,7 @@
 
     <div class="col-md-6 mt-2">
         <div class="card">
-            <img class="card-img-top" src="post/<%= p.getpPic()%>" alt="Card image capf">
+            <img class="card-img-top" style="width:auto;max-height:300px" src="post/<%= p.getpPic()%>" alt="Card image capf">
             <div class="card-body">
                 <b><%= p.getpTitle()%></b>
                 <p><%= p.getpContent()%></p>
@@ -43,7 +43,7 @@
                     LikeDao ld = new LikeDao(ConnectionProvider.getConnection());
                 %>
 
-                <a href="#!" onclick="doLike(<%= p.getPid()%>,<%= uuu.getId()%>)" class="btn btn-outline-light btn-sm"> <i class="fa fa-thumbs-o-up"></i> <span class="like-counter"><%= ld.countLikeOnPost(p.getPid())%></span>  </a>
+                
 
                 <a href="show_blog_page.jsp?post_id=<%= p.getPid()%>" class="btn btn-outline-light btn-sm">Read More...</a>
                 
